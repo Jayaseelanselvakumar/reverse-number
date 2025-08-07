@@ -2,25 +2,326 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reverse a Number</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilan Academy - Online Learning Platform</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        input, button { font-size: 1em; padding: 0.5em; }
-        #result { margin-top: 1em; font-weight: bold; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #2c3e50;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #e74c3c;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #c0392b;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        /* Services */
+        .services {
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Contact */
+        .contact {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: #3498db;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Reverse a Number</h1>
-    <input type="number" id="numberInput" placeholder="Enter a number" />
-    <button onclick="reverseNumber()">Reverse</button>
-    <div id="result"></div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Nilan Academy</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Nilan Academy</h1>
+            <p>Your gateway to quality online education. Explore courses, connect with expert tutors, and unlock your potential from anywhere in the world.</p>
+            <button class="cta-button">Start Learning Now</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <h2>Our Learning Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Online Courses</h3>
+                <p>Access a wide range of courses in technology, business, arts, and more—anytime, anywhere.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👩‍🏫</div>
+                <h3>Expert Tutoring</h3>
+                <p>Connect with certified tutors for personalized, one-on-one learning experiences.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📚</div>
+                <h3>Learning Resources</h3>
+                <p>Download study guides, practice tests, and interactive materials to boost your knowledge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Nilan Academy</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Nilan Academy is dedicated to making high-quality education accessible to everyone. Our platform brings together expert instructors, engaging content, and a supportive community to help you achieve your learning goals.</p>
+                <br>
+                <p>Whether you're looking to advance your career, learn a new skill, or explore a passion, Nilan Academy is here to guide you every step of the way.</p>
+            </div>
+            <div class="about-text">
+                <h3>Why Choose Nilan Academy?</h3>
+                <ul style="margin-top: 1rem; padding-left: 2rem;">
+                    <li>Wide variety of courses and subjects</li>
+                    <li>Expert, passionate instructors</li>
+                    <li>Flexible, self-paced learning</li>
+                    <li>Supportive online community</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3>📧 Email</h3>
+                <p>support@nilanacademy.com</p>
+            </div>
+            <div class="contact-item">
+                <h3>🌐 Website</h3>
+                <p>www.nilanacademy.com</p>
+            </div>
+            <div class="contact-item">
+                <h3>📍 Address</h3>
+                <p>456 Learning Lane<br>Edutown, Knowledge 67890</p>
+            </div>
+            <div class="contact-item">
+                <h3>⏰ Hours</h3>
+                <p>Monday - Friday: 8AM - 8PM<br>Saturday: 9AM - 4PM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Nilan Academy. All rights reserved.</p>
+    </footer>
 
     <script>
-        function reverseNumber() {
-            let num = document.getElementById('numberInput').value;
-            let reversed = num.split('').reverse().join('');
-            document.getElementById('result').textContent = "Reversed: " + reversed;
-        }
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // CTA button functionality
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            document.querySelector('#contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     </script>
 </body>
-</html>
+</html> 
